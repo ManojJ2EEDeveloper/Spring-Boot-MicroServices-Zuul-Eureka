@@ -1,0 +1,25 @@
+spring:
+  application:
+      name: eureka-service
+      
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    server:
+      waitTimeInMsWhenSyncEmpty: 0
+      
+server:
+   port: 9001
+
+zuul:
+    prefix: /api
+    routes :
+         Drug-Service : 
+          path : /Drug-Service/**
+          url :  http://localhost:9002
+         Patient-Service : 
+          path : /Patient-Service/**
+          url :  http://localhost:9003
+      
+      
